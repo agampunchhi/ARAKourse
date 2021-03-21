@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hephaestapp/loginRegPage.dart';
+import 'loginRegPage.dart';
 
-void main ()
+void main()
 {
   runApp(new Hephaestapp());
 }
@@ -16,8 +16,8 @@ class Hephaestapp extends StatelessWidget
       theme: new ThemeData(
         fontFamily: 'Helvetica',
       ),
-
-      home: LoginRegPage(),
+      debugShowCheckedModeBanner: false,
+      home: LoginRegPage()
     );
   }
 }
