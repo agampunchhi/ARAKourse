@@ -1,5 +1,5 @@
-import 'package:crypto_wallet/net/flutterfire.dart';
-import 'package:crypto_wallet/ui/home_view.dart';
+import 'package:hephaestapp/net/flutterfire.dart';
+import 'package:hephaestapp/ui/home_view.dart';
 import 'package:flutter/material.dart';
 
 class Authentication extends StatefulWidget {
@@ -75,10 +75,6 @@ TextEditingController _passwordfield = TextEditingController();
               ),
             ),
             SizedBox(height: 15),
-            new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children:
-            [
             Container(
               width: MediaQuery.of(context).size.width / 2.5,
               height: 45.0,
@@ -101,7 +97,7 @@ TextEditingController _passwordfield = TextEditingController();
               child: Text('Login', style: new TextStyle(fontSize: 24.0,),),
             ),
             ),
-            SizedBox(width:10),
+            SizedBox(height:10),
             Container(
               width: MediaQuery.of(context).size.width / 2.5,
               height: 45.0,
@@ -125,10 +121,8 @@ TextEditingController _passwordfield = TextEditingController();
             )
             ),
             ])
-          ],
         ),
-      ),
-    );
+      );
   }
 }
 

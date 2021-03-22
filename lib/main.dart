@@ -1,4 +1,4 @@
-import 'package:crypto_wallet/ui/authentication.dart';
+import 'package:hephaestapp/ui/SplashScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 void main() async{
@@ -14,9 +14,10 @@ class MyApp extends StatelessWidget {
       title: 'Hephaestapp',
       theme: new ThemeData(
         fontFamily: 'Helvetica',
+        accentColor: Colors.deepPurple,
       ),
       debugShowCheckedModeBanner: false,
-     home: Authentication(),
+     home: SplashScreen(),
     );
   }
 }
