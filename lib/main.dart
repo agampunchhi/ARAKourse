@@ -1,23 +1,23 @@
+import 'package:crypto_wallet/ui/authentication.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'loginRegPage.dart';
-
-void main()
-{
-  runApp(new Hephaestapp());
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
-
-class Hephaestapp extends StatelessWidget
-{
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: "Hephaestapp" ,
+    return MaterialApp(
+      title: 'Hephaestapp',
       theme: new ThemeData(
         fontFamily: 'Helvetica',
       ),
       debugShowCheckedModeBanner: false,
-      home: LoginRegPage()
+     home: Authentication(),
     );
   }
 }
+
