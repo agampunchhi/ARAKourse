@@ -1,7 +1,10 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
+
 
 Future<bool> signIn(String email, String password) async {
   try{
+
     await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
     return true;
   }
@@ -26,4 +29,17 @@ Future<bool> register(String email, String password) async {
    print(e.toString());
    return false;
  }
+}
+
+bool getCurrentUser()
+{
+  if(FirebaseAuth.instance.currentUser != null){
+    return true;
+  }
+return false;
+}
+
+Future<void> signOut() async
+{
+  FirebaseAuth.instance.signOut();
 }

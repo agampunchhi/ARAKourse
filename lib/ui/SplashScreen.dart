@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:hephaestapp/net/flutterfire.dart';
 import 'package:hephaestapp/ui/authentication.dart';
+import 'package:hephaestapp/ui/home_view.dart';
 
 class SplashScreen extends StatefulWidget {
   final TextStyle styleTextUnderTheLoader = TextStyle(
@@ -27,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void navigationPage() {
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Authentication()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) =>  getCurrentUser() ? HomeView() : Authentication()));
   }
 
   @override

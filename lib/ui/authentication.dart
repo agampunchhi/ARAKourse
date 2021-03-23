@@ -111,11 +111,6 @@ String _passwordfield = "";
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) => HomeView(),
                   ));
-                  return true;
-                  }
-                   else
-                  {
-                  return false;
                   }
                 },
 
@@ -142,11 +137,6 @@ String _passwordfield = "";
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) => HomeView(),
                   ));
-                  return true;
-                  }
-                   else
-                  {
-                  return false;
                   }
                 },
               child: Text('Register', style: new TextStyle(fontSize: 24.0)),
