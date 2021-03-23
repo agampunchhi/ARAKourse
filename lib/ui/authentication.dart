@@ -8,8 +8,9 @@ class Authentication extends StatefulWidget {
 }
 
 class _AuthenticationState extends State<Authentication> {
-TextEditingController _emailfield = TextEditingController();
-TextEditingController _passwordfield = TextEditingController();
+  final formKey = new GlobalKey<FormState>();
+String _emailfield = "";
+String _passwordfield = "";
 
   @override
 
@@ -30,6 +31,8 @@ TextEditingController _passwordfield = TextEditingController();
         decoration: BoxDecoration(
           color: const Color(0xfffbf9ff),
         ),
+        child: Form(
+          key: formKey,
         child: Column(
           
           children: [
@@ -37,11 +40,10 @@ TextEditingController _passwordfield = TextEditingController();
             logo(),
             SizedBox(height:30),
             TextFormField(
-              controller: _emailfield,
               textAlign: TextAlign.center,
               decoration: InputDecoration(
                 hintText: "Email",
-                suffixIcon: Icon(Icons.email_rounded, color: Colors.deepPurple),
+                prefixIcon: Icon(Icons.email_rounded, color: Colors.deepPurple),
                 border: OutlineInputBorder
                 (
                 borderSide: BorderSide(width: 2.0),
@@ -53,15 +55,22 @@ TextEditingController _passwordfield = TextEditingController();
                 borderSide: BorderSide(width: 2.0, color: Colors.deepPurple),
                 ),
               ),
+              validator: (value)
+        {
+            return value.isEmpty ? 'Email is Required.' : null;
+        },
+        onSaved: (value)
+        {
+          return _emailfield = value;
+        }
             ),
             SizedBox(height: 20),
             TextFormField(
-              controller: _passwordfield,
               obscureText: true,
               textAlign: TextAlign.center,
               decoration: InputDecoration(
                 hintText: "Password",
-                suffixIcon: Icon(Icons.vpn_key, color: Colors.deepPurple),
+                prefixIcon: Icon(Icons.vpn_key, color: Colors.deepPurple),
                 border: OutlineInputBorder
                 (
                 borderSide: BorderSide(width: 2.0),
@@ -73,6 +82,14 @@ TextEditingController _passwordfield = TextEditingController();
                 borderSide: BorderSide(width: 2.0, color: Colors.deepPurple),
                 ),
               ),
+              validator: (value)
+        {
+            return value.isEmpty ? 'Password is Required.' : null;
+        },
+        onSaved: (value)
+        {
+          return _passwordfield = value;
+        }
             ),
             SizedBox(height: 15),
             Container(
@@ -85,15 +102,23 @@ TextEditingController _passwordfield = TextEditingController();
               ),
               child: MaterialButton(
               textColor: Colors.black,
-              onPressed: () async {
-                 bool shouldNavigate = await signIn(_emailfield.text,_passwordfield.text);
-                if(shouldNavigate){
+              onPressed: () {
+                final form = formKey.currentState;
+                 if(form.validate())
+                  {
+                  form.save();
+                  signIn(_emailfield,_passwordfield);
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) => HomeView(),
-                  )
-                  );
-                }
-              },
+                  ));
+                  return true;
+                  }
+                   else
+                  {
+                  return false;
+                  }
+                },
+
               child: Text('Login', style: new TextStyle(fontSize: 24.0,),),
             ),
             ),
@@ -108,19 +133,27 @@ TextEditingController _passwordfield = TextEditingController();
               ),
               child: MaterialButton(
               
-              onPressed: () async {
-                bool shouldNavigate = await register(_emailfield.text,_passwordfield.text);
-                if(shouldNavigate){
+              onPressed: () {
+                final form = formKey.currentState;
+                 if(form.validate())
+                  {
+                  form.save();
+                  register(_emailfield,_passwordfield);
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) => HomeView(),
-                  )
-                  );
-                }
-              },
+                  ));
+                  return true;
+                  }
+                   else
+                  {
+                  return false;
+                  }
+                },
               child: Text('Register', style: new TextStyle(fontSize: 24.0)),
             )
             ),
-            ])
+            ]),
+        ),
         ),
       );
   }
