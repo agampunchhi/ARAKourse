@@ -159,7 +159,7 @@ Widget logo()
       child: new CircleAvatar
       (
         backgroundColor: Colors.transparent,
-        child: Image.asset('images/Logo.png'), //ADD APP LOGO HERE *****
+        child: Image.asset('images/LogoBlur.png'), //ADD APP LOGO HERE *****
         radius: 110.0,
       ),
     );
