@@ -56,13 +56,13 @@ String _passwordfield = "";
                 ),
               ),
               validator: (value)
-        {
-            return value.isEmpty ? 'Email is Required.' : null;
-        },
-        onSaved: (value)
-        {
-          return _emailfield = value;
-        }
+                {
+                  return RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value) ? null : "Please Enter Correct Email";
+                },
+                onSaved: (value)
+                {
+                  return _emailfield = value;
+                }
             ),
             SizedBox(height: 20),
             TextFormField(
@@ -82,10 +82,11 @@ String _passwordfield = "";
                 borderSide: BorderSide(width: 2.0, color: Colors.deepPurple),
                 ),
               ),
-              validator: (value)
-        {
-            return value.isEmpty ? 'Password is Required.' : null;
-        },
+                        validator: (value) {
+                            return value.length > 6
+                                ? null
+                                : "Enter Password 6+ characters";
+                          },
         onSaved: (value)
         {
           return _passwordfield = value;
@@ -108,9 +109,12 @@ String _passwordfield = "";
                   {
                   form.save();
                   signIn(_emailfield,_passwordfield);
+                  if(getCurrentUser())
+                  {
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) => HomeView(),
                   ));
+                  }
                   }
                 },
 
@@ -134,6 +138,7 @@ String _passwordfield = "";
                   {
                   form.save();
                   register(_emailfield,_passwordfield);
+
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) => HomeView(),
                   ));

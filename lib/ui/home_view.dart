@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hephaestapp/ui/add_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hephaestapp/net/flutterfire.dart';
+import 'package:hephaestapp/ui/authentication.dart';
 
 
 class HomeView extends StatefulWidget {
@@ -40,7 +42,7 @@ class _HomeViewState extends State<HomeView> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: StreamBuilder(
-          stream: FirebaseFirestore.instance.collection('Users').doc(FirebaseAuth.instance.currentUser.uid).collection('Coins').snapshots(),
+          stream: getCurrentUser() ? FirebaseFirestore.instance.collection('Users').doc(FirebaseAuth.instance.currentUser.uid).collection('Coins').snapshots() : null,
           builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
             if(!snapshot.hasData){
               return Center(
@@ -66,13 +68,14 @@ class _HomeViewState extends State<HomeView> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          signOut();
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => AddView()),
+            MaterialPageRoute(builder: (context) => Authentication()),
           );
         },
         child: Icon(
-          Icons.add,
+          Icons.logout,
           color: Colors.white,
           ),
           backgroundColor: Colors.blue,
