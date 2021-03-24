@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hephaestapp/net/flutterfire.dart';
 import 'package:hephaestapp/ui/authentication.dart';
 import 'package:hephaestapp/ui/home_view.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class SplashScreen extends StatefulWidget {
   final TextStyle styleTextUnderTheLoader = TextStyle(
@@ -14,7 +15,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
-  final splashDelay = 5;
+  final splashDelay = 10;
 
   @override
   void initState() {
@@ -41,19 +42,59 @@ class _SplashScreenState extends State<SplashScreen> {
           fit: StackFit.expand,
           children: <Widget>[
             Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Expanded(
                   flex: 7,
                   child: Container(
                       child: Column(
                     children: <Widget>[
-                      logo(),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10.0),
+                      SizedBox(height: MediaQuery.of(context).size.height / 8),
+                      SizedBox(
+                      height: 200,
+                      width: MediaQuery.of(context).size.width/1.3,
+                      child:logo(),
                       ),
-                      SizedBox(height: 20),
-                      Text('Hephaestapp', style: TextStyle(fontFamily: 'HelveticaBold', fontSize: 30))
+                      SizedBox(height: 40),
+                      SizedBox(
+                      width: MediaQuery.of(context).size.width /1.3,
+                      child: TypewriterAnimatedTextKit(
+                      isRepeatingAnimation: false,
+                      repeatForever: false,
+                      text: [
+                      "ARAKourse",
+                      ],
+                      speed: Duration(milliseconds: 200),
+                      textStyle: TextStyle(
+                      fontSize: 48.0,
+                      fontFamily: "HelveticaBold",
+                      color: Colors.deepPurple,
+                      ),
+                      textAlign: TextAlign.center,
+                      ),
+                    ),
+                    SizedBox(height: 30),
+                    SizedBox(
+                    width: MediaQuery.of(context).size.width/1.4,
+                    child: ColorizeAnimatedTextKit(
+                      speed: Duration(milliseconds: 200),
+                      text: [
+                        "FIND COURSES.",
+                        "COMPARE COURSES.",
+                        "TAKE COURSES.",
+                      ],
+                      textStyle: TextStyle(
+                          fontSize: 25.0,
+                          fontFamily: "HelveticaBold"
+                      ),
+                      colors: [
+                        Colors.deepPurple,
+                        Colors.red[900],
+                        Colors.blue[900],
+                        Colors.deepPurple[900],
+                      ],
+                      textAlign: TextAlign.center,
+                    ),
+                  )
                     ],
                   )),
                 ),
