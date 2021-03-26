@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:hephaestapp/helper/helper.dart';
 import 'package:hephaestapp/net/flutterfire.dart';
 import 'package:hephaestapp/ui/authentication.dart';
 import 'package:hephaestapp/ui/home_view.dart';
@@ -30,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void navigationPage() {
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) =>  getCurrentUser() ? HomeView() : Authentication()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) =>  getCurrentUser() ? HomeView() : Helper()));
   }
 
   @override

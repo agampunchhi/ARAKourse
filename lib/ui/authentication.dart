@@ -3,15 +3,45 @@ import 'package:hephaestapp/ui/home_view.dart';
 import 'package:flutter/material.dart';
 
 class Authentication extends StatefulWidget {
+
+final Function toggleView;
+Authentication(this.toggleView);
+
   @override
   _AuthenticationState createState() => _AuthenticationState();
 }
 
 class _AuthenticationState extends State<Authentication> {
-  final formKey = new GlobalKey<FormState>();
-String _emailfield = "";
-String _passwordfield = "";
+TextEditingController _emailfield = TextEditingController();
+TextEditingController _passwordfield = TextEditingController();
 
+AuthService authService = new AuthService();
+final formKey = GlobalKey<FormState>();
+ bool isLoading = false;
+
+ signIn() async {
+   
+    if (formKey.currentState.validate()) {
+      setState(() {
+        isLoading = true;
+      });
+      await authService.signInWithEmailAndPassword(_emailfield.text, _passwordfield.text).then((result) async {
+        if(result != null){
+            Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => HomeView()));
+      }
+      else {
+          setState(() {
+            isLoading = false;
+            //show snackbar
+          });
+        }
+      });
+        } 
+        
+ }
+
+  
   @override
 
   Widget build(BuildContext context) {
@@ -40,6 +70,7 @@ String _passwordfield = "";
             logo(),
             SizedBox(height:30),
             TextFormField(
+              controller: _emailfield,
               textAlign: TextAlign.center,
               decoration: InputDecoration(
                 hintText: "Email",
@@ -59,13 +90,11 @@ String _passwordfield = "";
                 {
                   return RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value) ? null : "Please Enter Correct Email";
                 },
-                onSaved: (value)
-                {
-                  return _emailfield = value;
-                }
+              
             ),
             SizedBox(height: 20),
             TextFormField(
+              controller: _passwordfield,
               obscureText: true,
               textAlign: TextAlign.center,
               decoration: InputDecoration(
@@ -87,10 +116,7 @@ String _passwordfield = "";
                                 ? null
                                 : "Enter Password 6+ characters";
                           },
-        onSaved: (value)
-        {
-          return _passwordfield = value;
-        }
+        
             ),
             SizedBox(height: 15),
             Container(
@@ -103,19 +129,8 @@ String _passwordfield = "";
               ),
               child: MaterialButton(
               textColor: Colors.black,
-              onPressed: () {
-                final form = formKey.currentState;
-                 if(form.validate())
-                  {
-                  form.save();
-                  signIn(_emailfield,_passwordfield);
-                  if(getCurrentUser())
-                  {
-                  Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => HomeView(),
-                  ));
-                  }
-                  }
+              onPressed: () async {
+                signIn();
                 },
 
               child: Text('Login', style: new TextStyle(fontSize: 24.0,),),
@@ -123,8 +138,8 @@ String _passwordfield = "";
             ),
             SizedBox(height:10),
             Container(
-              width: MediaQuery.of(context).size.width / 2.5,
-              height: 45.0,
+              width: MediaQuery.of(context).size.width / 1.5,
+              height: 35.0,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50.0),
                 color: const Color(0xfff7f0ff),
@@ -133,18 +148,9 @@ String _passwordfield = "";
               child: MaterialButton(
               
               onPressed: () {
-                final form = formKey.currentState;
-                 if(form.validate())
-                  {
-                  form.save();
-                  register(_emailfield,_passwordfield);
-
-                  Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => HomeView(),
-                  ));
-                  }
+                widget.toggleView();
                 },
-              child: Text('Register', style: new TextStyle(fontSize: 24.0)),
+              child: Text('Create an account now.', style: new TextStyle(fontSize: 20.0)),
             )
             ),
             ]),

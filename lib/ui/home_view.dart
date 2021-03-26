@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hephaestapp/ui/add_view.dart';
+import 'package:hephaestapp/helper/helper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import 'package:hephaestapp/net/flutterfire.dart';
 import 'package:hephaestapp/ui/authentication.dart';
 
@@ -12,6 +13,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  AuthService authMethods = new AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,11 +70,9 @@ class _HomeViewState extends State<HomeView> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          signOut();
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => Authentication()),
-          );
+          authMethods.signOut();
+              Navigator.pushReplacement(context, MaterialPageRoute(
+                builder: (context) => Helper()));
         },
         child: Icon(
           Icons.logout,
