@@ -7,9 +7,14 @@ class Favourites extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: const Color(0xFFBB80FF),
+        title: Text('Favourites', style: TextStyle(color: Colors.yellow, fontFamily: 'HelveticaBold', fontSize: 24),),
+      ),
       body: Container(
         decoration: BoxDecoration(
-          color: const Color(0xfff7f0ff),
+          color: const Color(0xFFE6D0FF),
         ),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -24,7 +29,7 @@ class Favourites extends StatelessWidget {
             return ListView(
               children: snapshot.data.docs.map((document){
                 return Container(
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.purple[100],),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: const Color(0xFFBB80FF),),
                   margin: EdgeInsets.only(top: 7, bottom: 7, left: 10, right: 10),
                   child: Column(
                     children:
@@ -36,7 +41,7 @@ class Favourites extends StatelessWidget {
                     SizedBox(width: 5),
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 1.5,
-                      child: Text('${document.id}', style: TextStyle(fontSize: 18,), textAlign: TextAlign.center,),
+                      child: Text('${document.id}', style: TextStyle(fontSize: 20,), textAlign: TextAlign.center,),
                       ),
                     SizedBox(width: 5),
                     SizedBox(child:

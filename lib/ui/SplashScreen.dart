@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void navigationPage() {
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) =>  getCurrentUser() ? SearchView() : Helper()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) =>  getCurrentUser() ? Home() : Helper()));
   }
 
   @override

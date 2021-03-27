@@ -126,7 +126,8 @@ bool getCurrentUser()
 return false;
 }
 
-Future<void> signOut() async
+void signOut()
 {
   FirebaseAuth.instance.signOut();
+  
 }

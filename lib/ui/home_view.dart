@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hephaestapp/profile/components/profile_screen.dart';
 import 'package:hephaestapp/ui/favourites.dart';
 import 'searchPage.dart';
 
@@ -14,8 +15,8 @@ class _HomeState extends State<Home> {
   final List<Widget> _children = [
     SearchView(),
     SearchView(),
-    Favourites(),
-
+    SearchView(),
+    ProfileScreen(),
   ];
 
  @override
@@ -23,6 +24,8 @@ class _HomeState extends State<Home> {
    return Scaffold(
      body: _children[_currentIndex], // new
      bottomNavigationBar: BottomNavigationBar(
+       type: BottomNavigationBarType.fixed,
+       showUnselectedLabels: true,
        unselectedItemColor: Colors.black,
        backgroundColor: const Color(0xFFBB80FF),
        fixedColor: Colors.yellow,
@@ -37,13 +40,18 @@ class _HomeState extends State<Home> {
          new BottomNavigationBarItem(
            icon: Icon(Icons.category_outlined),
            activeIcon: Icon(Icons.category_rounded),
-           title: Text('Category',  style: TextStyle(fontSize: 16, fontFamily: 'HelveticaBold'),),
+           title: Text('Categorys',  style: TextStyle(fontSize: 14, fontFamily: 'HelveticaBold'),),
          ),
          new BottomNavigationBarItem(
-           icon: Icon(Icons.person_outline_rounded),
-           activeIcon: Icon(Icons.person),
-           title: Text('Profile',  style: TextStyle(fontSize: 16, fontFamily: 'HelveticaBold'),),
-         )
+           icon: Icon(Icons.search_rounded),
+           activeIcon: Icon(Icons.search_sharp),
+           title: Text('Search', style: TextStyle(fontSize: 16, fontFamily: 'HelveticaBold'),),
+         ),
+         new BottomNavigationBarItem(
+           icon: Icon(Icons.more_horiz_outlined),
+           activeIcon: Icon(Icons.more_horiz_rounded),
+           title: Text('More',  style: TextStyle(fontSize: 14, fontFamily: 'HelveticaBold'),),
+         ),
        ],
      ),
    );

@@ -24,7 +24,7 @@ class _SearchViewState extends State<SearchView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xfff7f0ff),
+      backgroundColor: const Color(0xFFE6D0FF),
       body: SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -45,7 +45,7 @@ class _SearchViewState extends State<SearchView> {
               textAlign: TextAlign.center,
               decoration: InputDecoration(
                 hintText: "Search Courses",
-                prefixIcon: Icon(Icons.search_sharp, color: Colors.deepPurple),
+                prefixIcon: Icon(Icons.search_sharp, color: const Color(0xFFBB80FF)),
                 border: OutlineInputBorder
                 (
                 borderSide: BorderSide(width: 3.0),
@@ -171,7 +171,7 @@ class _SearchViewState extends State<SearchView> {
                         onTap: () async {
                         await addCourse(searchResponse[index]['title']);
                           },
-                          child: Icon(Icons.add_circle_outline_rounded, color: Colors.deepPurple,),
+                          child: Icon(Icons.add_circle_outline_rounded, color: const Color(0xFFBB80FF),),
                           ),
     
                       ],

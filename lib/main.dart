@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.deepPurple,
       ),
       debugShowCheckedModeBanner: false,
-     home: Home(),
+     home: SplashScreen(),
     );
   }
 }
