@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hephaestapp/categories/category1.dart';
 import 'package:hephaestapp/profile/components/profile_screen.dart';
+import 'package:hephaestapp/ui/categoryui.dart';
 import 'package:hephaestapp/ui/favourites.dart';
 import 'searchPage.dart';
 
@@ -14,7 +16,7 @@ class _HomeState extends State<Home> {
   int _currentIndex = 0;
   final List<Widget> _children = [
     SearchView(),
-    SearchView(),
+    CategoryPage(),
     SearchView(),
     ProfileScreen(),
   ];
@@ -40,7 +42,7 @@ class _HomeState extends State<Home> {
          new BottomNavigationBarItem(
            icon: Icon(Icons.category_outlined),
            activeIcon: Icon(Icons.category_rounded),
-           title: Text('Categorys',  style: TextStyle(fontSize: 14, fontFamily: 'HelveticaBold'),),
+           title: Text('Categories',  style: TextStyle(fontSize: 14, fontFamily: 'HelveticaBold'),),
          ),
          new BottomNavigationBarItem(
            icon: Icon(Icons.search_rounded),
