@@ -14,8 +14,8 @@ Details({Key key , @required this.title1, this.price1,this.url1,this.instruct,th
   Widget build(BuildContext context) {
     String urlFinal = 'https://www.udemy.com'+url1;
     return Scaffold(
-      backgroundColor: const Color(0xfff7f0ff),
-      appBar: AppBar(title: (Text("Course Details", style: TextStyle(fontFamily: 'HelveticaBold', color: Colors.black),)), backgroundColor: Colors.purple[100],),
+      backgroundColor: const Color(0xFFE6D0FF),
+      appBar: AppBar(title: (Text("Course Details", style: TextStyle(fontFamily: 'HelveticaBold', color: Colors.black),)), backgroundColor:const Color(0xFFBB80FF),),
       body: Container(
         margin: EdgeInsets.only(top: 7, bottom: 7, left: 10, right: 10),
         child: Column
@@ -56,7 +56,7 @@ Details({Key key , @required this.title1, this.price1,this.url1,this.instruct,th
                 width: MediaQuery.of(context).size.width / 1.5,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50.0),
-                  color: Colors.purple[100],
+                  color: const Color(0xFFBB80FF),
                 ),
                 child: Text('Check this course out',
                 style: TextStyle(fontSize: 20,color: Colors.black, fontFamily: 'HelveticaBold'),

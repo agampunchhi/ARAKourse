@@ -50,7 +50,7 @@ class _Categories6State extends State<Categories6> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(name,
-                  style: TextStyle(fontFamily: 'Helvetica', fontSize: 20), textAlign: TextAlign.center),
+                  style: TextStyle(fontFamily: 'HelveticaBold', fontSize: 20), textAlign: TextAlign.center),
             ],
           )),
     );

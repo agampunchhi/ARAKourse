@@ -27,6 +27,7 @@ dependencies:
   firebase_auth: "^0.20.1"
   cloud_firestore: "^0.16.0+1"
   url_launcher: ^6.0.3
+  random_color: ^1.0.5
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -56,6 +57,7 @@ flutter:
   assets:
     - images/
     - assets/
+    - assets/Waves.json
   #   - images/a_dot_ham.jpeg
   fonts:
       - family: Helvetica

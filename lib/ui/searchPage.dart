@@ -113,7 +113,7 @@ class _SearchViewState extends State<SearchView> {
                 return Container(
                   decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
-                        color: Colors.purple[100],
+                        color: const Color(0xFFBB80FF),
                       ),
                   
                   margin: EdgeInsets.only(top: 7, bottom: 7, left: 15, right: 15),
@@ -125,7 +125,7 @@ class _SearchViewState extends State<SearchView> {
                     children: [
                     SizedBox(
                     width: MediaQuery.of(context).size.width / 3,
-                    child: Text(searchResponse[index]['title'], textAlign: TextAlign.center, style: TextStyle(fontSize: 16)),
+                    child: Text(searchResponse[index]['title'], textAlign: TextAlign.center, style: TextStyle(fontSize: 16,  fontFamily: 'HelveticaBold')),
                     ),
                     SizedBox(width: 10),
                         GestureDetector(
@@ -171,7 +171,7 @@ class _SearchViewState extends State<SearchView> {
                         onTap: () async {
                         await addCourse(searchResponse[index]['title']);
                           },
-                          child: Icon(Icons.add_circle_outline_rounded, color: const Color(0xFFBB80FF),),
+                          child: Icon(Icons.add_circle_outline_rounded, color: Colors.black,),
                           ),
     
                       ],

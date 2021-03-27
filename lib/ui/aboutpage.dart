@@ -51,7 +51,7 @@ class _AboutViewState extends State<AboutView> {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 20),
-            Text(' This app is developed by students for students. ',
+            Text(' This app is developed by students, for students. ',
                 textAlign: TextAlign.center, style: TextStyle(fontSize: 18)),
               SizedBox(height: 10),
             Text(

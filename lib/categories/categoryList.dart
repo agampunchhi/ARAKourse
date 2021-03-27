@@ -33,7 +33,7 @@ CatList({Key key , @required this.searchResponse});
                 return Container(
                   decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
-                        color: Colors.purple[200],
+                        color: const Color(0xFFBB80FF),
                       ),
                   margin: EdgeInsets.only(top: 7, bottom: 7, left: 15, right: 15),
                   child: Column(
@@ -44,7 +44,7 @@ CatList({Key key , @required this.searchResponse});
                     children: [
                     SizedBox(
                     width: MediaQuery.of(context).size.width / 3,
-                    child: Text(searchResponse[index]['title'], textAlign: TextAlign.center, style: TextStyle(fontSize: 16)),
+                    child: Text(searchResponse[index]['title'], textAlign: TextAlign.center, style: TextStyle(fontSize: 16, fontFamily: 'HelveticaBold')),
                     ),
                     SizedBox(width: 10),
                         GestureDetector(
