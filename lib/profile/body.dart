@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hephaestapp/ui/aboutpage.dart';
 import 'package:hephaestapp/ui/favourites.dart';
 import 'profile_menu.dart';
 import 'package:hephaestapp/net/flutterfire.dart';
@@ -32,7 +33,11 @@ class Body extends StatelessWidget {
               ProfileMenu(
           text: "About Us",
           icon: Icon(Icons.info_rounded, color: Colors.yellow),
-          press: () {}
+          press: () {
+             Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => AboutView()));
+          }
           ),
 
               ProfileMenu(
