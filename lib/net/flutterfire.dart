@@ -56,6 +56,22 @@ Future signOut() async {
 
 }
 
+Future <bool> addCourse(String courseid) async {
+String uid = FirebaseAuth.instance.currentUser.uid;
+DocumentReference documentReference = FirebaseFirestore.instance.collection('Users').doc(uid).collection('Courses').doc(courseid);
+FirebaseFirestore.instance.runTransaction((transaction) async{
+DocumentSnapshot snapshot = await transaction.get(documentReference);
+  documentReference.set({'Course': courseid});
+  return true;
+});
+
+}
+
+Future<bool> removeCourse(String courseid) async{
+String uid = FirebaseAuth.instance.currentUser.uid;
+FirebaseFirestore.instance.collection('Users').doc(uid).collection('Courses').doc(courseid).delete();
+return true;
+}
 
 
 

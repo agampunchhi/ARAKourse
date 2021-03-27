@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:http/http.dart';
+import 'package:hephaestapp/net/coursedetails.dart';
+import 'package:hephaestapp/ui/coursepage.dart';
+import 'package:hephaestapp/net/flutterfire.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SearchView extends StatefulWidget {
   SearchView({Key key}) : super(key: key);
@@ -15,6 +20,7 @@ class _SearchViewState extends State<SearchView> {
   Map mapResponse = null;
   List searchResponse = null;
   Map mapResponse1 = null;
+  List searchResponse1 = null;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,13 +48,13 @@ class _SearchViewState extends State<SearchView> {
                 prefixIcon: Icon(Icons.search_sharp, color: Colors.deepPurple),
                 border: OutlineInputBorder
                 (
-                borderSide: BorderSide(width: 2.0),
+                borderSide: BorderSide(width: 3.0),
                 borderRadius: BorderRadius.circular(20),
                 ),
                 focusedBorder: OutlineInputBorder
                 (
                 borderRadius: BorderRadius.circular(20),
-                borderSide: BorderSide(width: 2.0, color: Colors.deepPurple),
+                borderSide: BorderSide(width: 3.0, color: Colors.deepPurple),
                 ),
               ),
               validator: (value)
@@ -65,7 +71,7 @@ class _SearchViewState extends State<SearchView> {
               SizedBox(width: 8),
               Container(
               width: MediaQuery.of(context).size.width / 4.5,
-              height: MediaQuery.of(context).size.height / 16,
+              height: MediaQuery.of(context).size.height / 15,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.0),
                 color: const Color(0xFFBB80FF),
@@ -88,12 +94,12 @@ class _SearchViewState extends State<SearchView> {
                     setState(() {
                 mapResponse = json.decode(searchCourse.body);
                 searchResponse = mapResponse['results'];
-                print(searchResponse);
+                //print(searchResponse);
                 });
                 }
                 }
                 },
-              child: Text('Search', style: new TextStyle(fontSize: 16.0, color: Colors.black),)
+              child: Text('Search', style: new TextStyle(fontSize: 16.0, color: Colors.black, fontFamily: 'HelveticaBold'),)
             ),
             ),
             ]
@@ -110,19 +116,18 @@ class _SearchViewState extends State<SearchView> {
                         color: Colors.purple[100],
                       ),
                   
-                  margin: EdgeInsets.only(top: 7, bottom: 7, left: 10, right: 10),
+                  margin: EdgeInsets.only(top: 7, bottom: 7, left: 15, right: 15),
                   child: Column(
                     children: [
                     SizedBox(height: 10),
+                    Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
                     SizedBox(
-                    width: MediaQuery.of(context).size.width / 1.1,
+                    width: MediaQuery.of(context).size.width / 3,
                     child: Text(searchResponse[index]['title'], textAlign: TextAlign.center, style: TextStyle(fontSize: 16)),
                     ),
-                    SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children:
-                      [
+                    SizedBox(width: 10),
                         GestureDetector(
                         onTap: () async{
                         Response searchCourse1;
@@ -132,28 +137,43 @@ class _SearchViewState extends State<SearchView> {
                         String auth = base64.encode(utf8.encode('$Client_id:$Client_Secret'));
                         searchCourse1 = await http.get(url ,headers: {"Authorization": "Basic " + auth});
                         if(searchCourse1.statusCode==200){
-                            setState(() {
-                              mapResponse1 = json.decode(searchCourse1.body);
-                              print(mapResponse1);
+                              setState(() {
+                        mapResponse1 = json.decode(searchCourse1.body);
+                        searchResponse1 = mapResponse1['visible_instructors'];
+                        print(searchResponse1);
+                        CourseDetail instance = CourseDetail(imgurl: searchResponse[index]['image_480x270'],title:mapResponse1['title'].toString(), price:mapResponse1['price_detail']['amount'].toString(), url:mapResponse1['url'].toString(), instructor: searchResponse1[0]['display_name'].toString(), insturl: searchResponse1[0]['image_100x100'].toString() );
+                        Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Details(title1:instance.title , price1: instance.price, url1: instance.url,instruct:instance.instructor, insturl: instance.insturl,imgurl: instance.imgurl,),
+                      ),
+                        );
+
                         });
                         }
                         else 
                         {
                           print(searchCourse1.statusCode);
                         }
-
                        },
-                    child:Text('Price: ₹'+'${searchResponse[index]['price_detail']['amount']}', textAlign: TextAlign.left, style: TextStyle(fontSize: 16)),
+                       child: Container(
+                        width: 140.0,
+                        height: 80.0,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.fill, image: NetworkImage(searchResponse[index]['image_125_H'])),
+                          borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                          color: Colors.redAccent,
                         ),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 3,
-                      height: 30.0,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50.0),
-                        color: Color(0xFFD4AFFF),
-
                       ),
-                    ),
+                        ),
+                     SizedBox(width: 15),
+                      GestureDetector(
+                        onTap: () async {
+                        await addCourse(searchResponse[index]['title']);
+                          },
+                          child: Icon(Icons.add_circle_outline_rounded, color: Colors.deepPurple,),
+                          ),
+    
                       ],
                     ),
                     SizedBox(height: 10),
@@ -161,7 +181,7 @@ class _SearchViewState extends State<SearchView> {
                   ),
                 );
               },
-              itemCount: searchResponse==null ? 0 : searchResponse.length
+              itemCount: searchResponse== null ? 0 : searchResponse.length
               )
         ],
 

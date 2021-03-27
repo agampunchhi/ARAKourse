@@ -32,7 +32,7 @@ bool isLoading = false;
       //print("${val.uid}");
       if(val != null){
       Navigator.pushReplacement(context, MaterialPageRoute(
-        builder: (context) => HomeView()
+        builder: (context) => Home()
       ));
       }
       else {

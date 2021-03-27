@@ -28,7 +28,7 @@ final formKey = GlobalKey<FormState>();
       await authService.signInWithEmailAndPassword(_emailfield.text, _passwordfield.text).then((result) async {
         if(result != null){
             Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => HomeView()));
+              context, MaterialPageRoute(builder: (context) => Home()));
       }
       else {
           setState(() {
