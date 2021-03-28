@@ -13,12 +13,15 @@ class _Categories4State extends State<Categories4> {
   @override
   Widget build(BuildContext context) {
 
+    // ignore: avoid_init_to_null
     List searchResponse = null;
+    // ignore: avoid_init_to_null
     Map mapResponse = null;
     Response searchCourse;
     String name = 'Music';
     return GestureDetector(
       onTap: () async{
+      // ignore: unnecessary_brace_in_string_interps
       var url = Uri.parse('https://www.udemy.com/api-2.0/courses/?category=${name}');
       const String Client_id = '8A5zSXdl0Zqw9msZT8zjIunfJnxm8NMHB8jkxY84';
       const String Client_Secret = 'QjjfkknVPfRBWJnJDMiCwEswkIevljW4JlendE1gv3nJbBjYDsXPV79Prz4dR7B58KYb5rDUicbCksxAP2NSZrpui4qlDyPas1K93R3D5Jfd7OT5B4eml1g8T7O8F3oH';
@@ -29,6 +32,7 @@ class _Categories4State extends State<Categories4> {
       mapResponse = json.decode(searchCourse.body);
       searchResponse = mapResponse['results'];
       print(searchResponse);
+      // ignore: unused_local_variable
       Category instance = Category(searchResponse: searchResponse);
                         Navigator.push(
                         context,

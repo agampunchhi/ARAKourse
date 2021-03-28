@@ -5,7 +5,6 @@ import 'package:http/http.dart';
 import 'coursepage.dart';
 import 'package:hephaestapp/net/flutterfire.dart';
 import 'package:hephaestapp/net/coursedetails.dart';
-import 'package:random_color/random_color.dart';
 import 'package:lottie/lottie.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
@@ -22,9 +21,13 @@ class _HomePageState extends State<HomePage> {
   }
   final formKey = GlobalKey<FormState>();
   String searchTerm;
+  // ignore: avoid_init_to_null
   Map mapResponse = null;
+  // ignore: avoid_init_to_null
   List searchResponse = null;
+  // ignore: avoid_init_to_null
   Map mapResponse1 = null;
+  // ignore: avoid_init_to_null
   List searchResponse1 = null;
   void getCourses() async {
   Response searchCourse;

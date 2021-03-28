@@ -2,11 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hephaestapp/helper/helper.dart';
 import 'package:hephaestapp/net/flutterfire.dart';
-import 'package:hephaestapp/ui/authentication.dart';
-import 'package:hephaestapp/ui/favourites.dart';
 import 'package:hephaestapp/ui/home_view.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:hephaestapp/ui/searchPage.dart';
 
 class SplashScreen extends StatefulWidget {
   final TextStyle styleTextUnderTheLoader = TextStyle(

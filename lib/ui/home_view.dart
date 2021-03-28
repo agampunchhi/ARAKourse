@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:hephaestapp/categories/category1.dart';
 import 'package:hephaestapp/profile/components/profile_screen.dart';
 import 'package:hephaestapp/ui/HomePage.dart';
 import 'package:hephaestapp/ui/categoryui.dart';
+// ignore: unused_import
 import 'package:hephaestapp/ui/favourites.dart';
 import 'searchPage.dart';
 
@@ -38,21 +40,25 @@ class _HomeState extends State<Home> {
          new BottomNavigationBarItem(
            icon: Icon(Icons.home_outlined),
            activeIcon: Icon(Icons.home_rounded),
+           // ignore: deprecated_member_use
            title: Text('Home', style: TextStyle(fontSize: 16, fontFamily: 'HelveticaBold'),),
          ),
          new BottomNavigationBarItem(
            icon: Icon(Icons.category_outlined),
            activeIcon: Icon(Icons.category_rounded),
+           // ignore: deprecated_member_use
            title: Text('Categories',  style: TextStyle(fontSize: 14, fontFamily: 'HelveticaBold'),),
          ),
          new BottomNavigationBarItem(
            icon: Icon(Icons.search_rounded),
            activeIcon: Icon(Icons.search_sharp),
+           // ignore: deprecated_member_use
            title: Text('Search', style: TextStyle(fontSize: 16, fontFamily: 'HelveticaBold'),),
          ),
          new BottomNavigationBarItem(
            icon: Icon(Icons.more_horiz_outlined),
            activeIcon: Icon(Icons.more_horiz_rounded),
+           // ignore: deprecated_member_use
            title: Text('More',  style: TextStyle(fontSize: 14, fontFamily: 'HelveticaBold'),),
          ),
        ],

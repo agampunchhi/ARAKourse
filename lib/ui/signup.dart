@@ -22,6 +22,7 @@ bool isLoading = false;
   TextEditingController emailTextEditingController = new TextEditingController();
   TextEditingController passwordTextEditingController = new TextEditingController();
 
+  // ignore: non_constant_identifier_names
   SignMeUp() async{
     if(formKey.currentState.validate()){
      setState(() {

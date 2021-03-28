@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'categoryClass.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
@@ -7,13 +8,18 @@ import 'dart:convert';
 import 'package:hephaestapp/net/coursedetails.dart';
 import 'package:hephaestapp/ui/coursepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+// ignore: unused_import
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+// ignore: must_be_immutable
 class CatList extends StatelessWidget {
   List searchResponse;
+  // ignore: avoid_init_to_null
   Map mapResponse = null;
+  // ignore: avoid_init_to_null
   Map mapResponse1 = null;
+  // ignore: avoid_init_to_null
   List searchResponse1 = null;
 CatList({Key key , @required this.searchResponse});
   @override
@@ -107,15 +113,18 @@ CatList({Key key , @required this.searchResponse});
     );
 }
 
+// ignore: unused_element
 void _launchURL(String _url) async =>
     await canLaunch(_url) ? await launch(_url) : throw 'Could not open $_url!';
 }
 
 
+// ignore: missing_return
 Future <bool> addCourse(String courseid) async {
 String uid = FirebaseAuth.instance.currentUser.uid;
 DocumentReference documentReference = FirebaseFirestore.instance.collection('Users').doc(uid).collection('Courses').doc(courseid);
 FirebaseFirestore.instance.runTransaction((transaction) async{
+// ignore: unused_local_variable
 DocumentSnapshot snapshot = await transaction.get(documentReference);
   documentReference.set({'Course': courseid});
   return true;

@@ -5,7 +5,9 @@ import 'package:http/http.dart';
 import 'package:hephaestapp/net/coursedetails.dart';
 import 'package:hephaestapp/ui/coursepage.dart';
 import 'package:hephaestapp/net/flutterfire.dart';
+// ignore: unused_import
 import 'package:firebase_auth/firebase_auth.dart';
+// ignore: unused_import
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SearchView extends StatefulWidget {
@@ -17,9 +19,13 @@ class SearchView extends StatefulWidget {
 class _SearchViewState extends State<SearchView> {
   final formKey = GlobalKey<FormState>();
   String searchTerm;
+  // ignore: avoid_init_to_null
   Map mapResponse = null;
+  // ignore: avoid_init_to_null
   List searchResponse = null;
+  // ignore: avoid_init_to_null
   Map mapResponse1 = null;
+  // ignore: avoid_init_to_null
   List searchResponse1 = null;
   @override
   Widget build(BuildContext context) {
@@ -87,6 +93,7 @@ class _SearchViewState extends State<SearchView> {
                 {
                 form.save();
                 Response searchCourse;
+                // ignore: unnecessary_brace_in_string_interps
                 var url = Uri.parse('https://www.udemy.com/api-2.0/courses/?search=${searchTerm}');
                 const String Client_id = '8A5zSXdl0Zqw9msZT8zjIunfJnxm8NMHB8jkxY84';
                 const String Client_Secret = 'QjjfkknVPfRBWJnJDMiCwEswkIevljW4JlendE1gv3nJbBjYDsXPV79Prz4dR7B58KYb5rDUicbCksxAP2NSZrpui4qlDyPas1K93R3D5Jfd7OT5B4eml1g8T7O8F3oH';
