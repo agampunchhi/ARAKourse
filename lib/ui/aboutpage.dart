@@ -56,14 +56,14 @@ class _AboutViewState extends State<AboutView> {
                 textAlign: TextAlign.center, style: TextStyle(fontSize: 18)),
               SizedBox(height: 10),
             Text(
-              ' The app is named after the three developers:',
+              ' The app is named after the four developers:',
               style: TextStyle(fontSize: 17),
             ),
             SizedBox(height: 20),
           AnimatedTextKit(
               isRepeatingAnimation: false,
               animatedTexts: [
-                TyperAnimatedText('AGAM\nRAGHAV\nABHINAV',
+                TyperAnimatedText('AGAM\nRAGHAV\nABHINAV\nKUHU',
                 speed: Duration(milliseconds: 150),
                 textAlign: TextAlign.justify,
                 textStyle: TextStyle(
