@@ -14,10 +14,11 @@ Details({Key key , @required this.title1, this.price1,this.url1,this.instruct,th
   Widget build(BuildContext context) {
     String urlFinal = 'https://www.udemy.com'+url1;
     return Scaffold(
-      backgroundColor: const Color(0xFFE6D0FF),
-      appBar: AppBar(title: (Text("Course Details", style: TextStyle(fontFamily: 'HelveticaBold', color: Colors.black),)), backgroundColor:const Color(0xFFBB80FF),),
+      backgroundColor: const Color(0xFFFFFFFF),
+      appBar: AppBar(title: (Text("Course Details", style: TextStyle(height: 1.25 ,wordSpacing: 4,fontFamily: 'HelveticaBold', color: Colors.black),)), backgroundColor:const Color(0xFFBB80FF), elevation: 0,),
       body: Container(
         margin: EdgeInsets.only(top: 7, bottom: 7, left: 10, right: 10),
+        child: SingleChildScrollView(
         child: Column
         (
           mainAxisAlignment : MainAxisAlignment.start,
@@ -33,6 +34,7 @@ Details({Key key , @required this.title1, this.price1,this.url1,this.instruct,th
                               fit: BoxFit.fill, image: NetworkImage(imgurl),
                           ),
                           borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                          border: Border.all(width: 2, color: Colors.deepPurple),
                         ),
                       ),
             SizedBox(height: 20),
@@ -81,6 +83,7 @@ Details({Key key , @required this.title1, this.price1,this.url1,this.instruct,th
               child: Text(instruct, textAlign: TextAlign.center, style: TextStyle(fontSize: 20,color: Colors.black, fontFamily: 'HelveticaBold'))
             )
           ],
+        ),
         ),
       )
       );

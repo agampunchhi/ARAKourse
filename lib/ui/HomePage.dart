@@ -20,7 +20,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     getCourses();    
   }
-  RandomColor _randomColor = RandomColor();
   final formKey = GlobalKey<FormState>();
   String searchTerm;
   Map mapResponse = null;
@@ -44,14 +43,9 @@ class _HomePageState extends State<HomePage> {
 }
   @override
   Widget build(BuildContext context) {
-  ColorSaturation _colorSaturation = ColorSaturation.highSaturation;
-    Color _color = _randomColor.randomColor(
-      colorBrightness: ColorBrightness.veryLight,
-      colorSaturation: _colorSaturation,
-  colorHue: ColorHue.multiple(colorHues: [ColorHue.purple, ColorHue.blue])
-  );
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         toolbarHeight: 50,
         elevation: 0,
         backgroundColor: const Color(0xFFBB80FF),
@@ -65,7 +59,7 @@ class _HomePageState extends State<HomePage> {
       fontWeight: FontWeight.bold,
     ),),
       ),
-      backgroundColor: const Color(0xFFE6D0FF),
+      backgroundColor: const Color(0xFFFFFFF),
       body: SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -74,8 +68,10 @@ class _HomePageState extends State<HomePage> {
           SizedBox(),
           SizedBox(
             height: MediaQuery.of(context).size.height / 8,
+            width: MediaQuery.of(context).size.width,
             child: Lottie.asset('assets/Waves.json'),
-          ),  
+          ),
+          SizedBox(height: 10),  
           SizedBox(
             width: MediaQuery.of(context).size.width / 1.1,
             height: MediaQuery.of(context).size.height / 14,
@@ -86,22 +82,22 @@ class _HomePageState extends State<HomePage> {
                 itemBuilder: (context,index) {
                 return Container(
                   decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        color: _color,
+                        borderRadius: BorderRadius.circular(15.0),
+                        color: Color(0xFF8F4CFC),
                       ),
                   
                   margin: EdgeInsets.only(top: 7, bottom: 7, left: 15, right: 15),
                   child: Column(
                     children: [
-                    SizedBox(height: 10),
+                    SizedBox(height: 15),
                     Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                     SizedBox(
                     width: MediaQuery.of(context).size.width / 3,
-                    child: Text(searchResponse[index]['title'], textAlign: TextAlign.center, style: TextStyle(fontSize: 16, fontFamily: 'HelveticaBold')),
+                    child: Text(searchResponse[index]['title'], textAlign: TextAlign.center, style: TextStyle(height: 1.25 ,wordSpacing: 4,fontSize: 16, fontFamily:'HelveticaBold',color: Colors.white)),
                     ),
-                    SizedBox(width: 10),
+                    SizedBox(width: 20),
                         GestureDetector(
                         onTap: () async{
                         Response searchCourse1;
@@ -130,27 +126,27 @@ class _HomePageState extends State<HomePage> {
                         }
                        },
                        child: Container(
-                        width: 140.0,
+                        width: 120.0,
                         height: 80.0,
                         decoration: BoxDecoration(
                           image: DecorationImage(
                               fit: BoxFit.fill, image: NetworkImage(searchResponse[index]['image_125_H'])),
-                          borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                          color: Colors.redAccent,
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                          color:const Color(0xFFBB80FF),
                         ),
                       ),
                         ),
-                     SizedBox(width: 15),
+                     SizedBox(width: 20),
                       GestureDetector(
                         onTap: () async {
                         await addCourse(searchResponse[index]['title']);
                           },
-                          child: Icon(Icons.add_circle_outline_rounded, color: Colors.black),
+                          child: Icon(Icons.add_circle_outline_rounded, color: Colors.white),
                           ),
     
                       ],
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 15),
                   ],
                   ),
                 );

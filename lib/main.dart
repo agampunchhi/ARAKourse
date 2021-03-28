@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Hephaestapp',
+      title: 'ARAKourse',
       theme: new ThemeData(
         fontFamily: 'Helvetica',
         accentColor: Colors.deepPurple,

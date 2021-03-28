@@ -10,13 +10,14 @@ class _AboutViewState extends State<AboutView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFE6D0FF),
+      backgroundColor: const Color(0xFFFFFFFF),
       appBar: AppBar(
         elevation: 0,
         backgroundColor:  const Color(0xFFBB80FF),
         title: Text('About Us', style: TextStyle(color: Colors.yellow, fontFamily: 'HelveticaBold', fontSize: 20),),
       ),
       body: Center(
+        child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
@@ -73,6 +74,7 @@ class _AboutViewState extends State<AboutView> {
               ]
             ),
           ],
+        ),
         ),
       ),
     );

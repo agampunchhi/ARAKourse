@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/agampunchhi/Downloads/Hephaestapp/HephaestusTesting/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
+            "outputFile": "/Users/agampunchhi/Downloads/Hacko-1-Hephaestus/hephaestapp/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/Users/agampunchhi/Downloads/Hephaestapp/HephaestusTesting/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/Users/agampunchhi/Downloads/Hacko-1-Hephaestus/hephaestapp/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

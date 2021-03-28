@@ -19,10 +19,11 @@ class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFE6D0FF),
+      backgroundColor: const Color(0xFFFFFFFF),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: const Color(0xFFBB80FF),
-        title: Text('Categories', style: TextStyle(color: Colors.black, fontFamily: 'HelveticaBold')),
+        title: Text('Categories', style: TextStyle(color: Colors.yellow, fontFamily: 'HelveticaBold')),
       ),
       body: GridView.count(
           padding: EdgeInsets.all(10),

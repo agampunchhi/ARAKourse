@@ -24,7 +24,7 @@ class _SearchViewState extends State<SearchView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFE6D0FF),
+      backgroundColor: const Color(0xFFFFFFFF),
       body: SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -42,10 +42,12 @@ class _SearchViewState extends State<SearchView> {
               SizedBox(
               width: 250,
               child: TextFormField(
+                style: TextStyle(fontFamily: 'HelveticaBold'),
               textAlign: TextAlign.center,
               decoration: InputDecoration(
                 hintText: "Search Courses",
-                prefixIcon: Icon(Icons.search_sharp, color: const Color(0xFFBB80FF)),
+                hintStyle: TextStyle(fontFamily: 'Helvetica'),
+                prefixIcon: Icon(Icons.search_sharp, color: const Color(0xFF8F4CFC)),
                 border: OutlineInputBorder
                 (
                 borderSide: BorderSide(width: 3.0),
@@ -111,23 +113,24 @@ class _SearchViewState extends State<SearchView> {
                 shrinkWrap: true,
                 itemBuilder: (context,index) {
                 return Container(
+                  width: MediaQuery.of(context).size.width / 1.1,
                   decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        color: const Color(0xFFBB80FF),
+                        borderRadius: BorderRadius.circular(15.0),
+                        color: const Color(0xFF8F4CFC),
                       ),
                   
                   margin: EdgeInsets.only(top: 7, bottom: 7, left: 15, right: 15),
                   child: Column(
                     children: [
-                    SizedBox(height: 10),
+                    SizedBox(height: 15),
                     Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                     SizedBox(
                     width: MediaQuery.of(context).size.width / 3,
-                    child: Text(searchResponse[index]['title'], textAlign: TextAlign.center, style: TextStyle(fontSize: 16,  fontFamily: 'HelveticaBold')),
+                    child: Text(searchResponse[index]['title'], textAlign: TextAlign.center, style: TextStyle(height: 1.25 ,wordSpacing: 4, color: Colors.white,fontSize: 16,  fontFamily: 'HelveticaBold')),
                     ),
-                    SizedBox(width: 10),
+                    SizedBox(width: 20),
                         GestureDetector(
                         onTap: () async{
                         Response searchCourse1;
@@ -156,27 +159,27 @@ class _SearchViewState extends State<SearchView> {
                         }
                        },
                        child: Container(
-                        width: 140.0,
+                        width: 120.0,
                         height: 80.0,
                         decoration: BoxDecoration(
                           image: DecorationImage(
                               fit: BoxFit.fill, image: NetworkImage(searchResponse[index]['image_125_H'])),
-                          borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                          color: Colors.redAccent,
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                          color: const Color(0xFFBB80FF),
                         ),
                       ),
                         ),
-                     SizedBox(width: 15),
+                     SizedBox(width: 20),
                       GestureDetector(
                         onTap: () async {
                         await addCourse(searchResponse[index]['title']);
                           },
-                          child: Icon(Icons.add_circle_outline_rounded, color: Colors.black,),
+                          child: Icon(Icons.add_circle_outline_rounded, color: Colors.white,),
                           ),
     
                       ],
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 15),
                   ],
                   ),
                 );
